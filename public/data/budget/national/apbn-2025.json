@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "year": 2025,
+    "type": "APBN",
+    "region": "National",
+    "lastUpdated": "2025-01-15",
+    "source": "DJPK Kemenkeu RI",
+    "currency": "IDR",
+    "population": 275000000
+  },
+  "revenue": {
+    "total": 2740500000000000,
+    "sources": {
+      "tax": 2180400000000000,
+      "non_tax": 560100000000000
+    },
+    "breakdown": {
+      "pajak_penghasilan": 980500000000000,
+      "pajak_pertambahan_nilai": 845200000000000,
+      "pajak_bumi_bangunan": 125300000000000,
+      "bea_cukai": 229400000000000,
+      "penerimaan_sda": 385600000000000,
+      "keuntungan_bumn": 95200000000000,
+      "pnbp_lainnya": 79300000000000
+    }
+  },
+  "expenditure": {
+    "total": 3061400000000000,
+    "categories": {
+      "infrastruktur": 450200000000000,
+      "pendidikan": 612300000000000,
+      "kesehatan": 245800000000000,
+      "pertahanan": 178900000000000,
+      "keamanan": 145600000000000,
+      "ekonomi": 385700000000000,
+      "perlindungan_sosial": 485200000000000,
+      "lingkungan": 87400000000000,
+      "perumahan": 125800000000000,
+      "pariwisata": 34500000000000,
+      "pertanian": 89500000000000,
+      "energi": 220500000000000
+    },
+    "breakdown": {
+      "operational": 1835000000000000,
+      "capital": 685400000000000,
+      "transfer": 541000000000000
+    }
+  },
+  "deficit": 320900000000000,
+  "financing": {
+    "total": 320900000000000,
+    "domestic": 285400000000000,
+    "foreign": 35500000000000
+  }
+}

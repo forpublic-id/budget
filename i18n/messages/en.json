@@ -1,0 +1,94 @@
+{
+  "navigation": {
+    "home": "Home",
+    "national": "National Budget",
+    "regional": "Regional Budget",
+    "compare": "Compare",
+    "trends": "Trends",
+    "categories": "Categories",
+    "search": "Search",
+    "methodology": "Methodology",
+    "about": "About"
+  },
+  "homepage": {
+    "title": "Indonesian Budget Transparency",
+    "subtitle": "Transparency platform for Indonesian national and regional budgets with interactive visualizations and in-depth analysis",
+    "hero": {
+      "title": "Budget Transparency For All",
+      "description": "Easy access to Indonesian national and regional budget data with understandable visualizations and comprehensive analysis",
+      "cta_primary": "Explore National Budget",
+      "cta_secondary": "View Regional Budgets"
+    },
+    "stats": {
+      "apbn_title": "National Budget 2025",
+      "apbn_amount": "IDR 3,061.4 T",
+      "apbd_title": "Total Regional Budgets",
+      "apbd_amount": "IDR 850+ T",
+      "regions": "34 Provinces",
+      "cities": "500+ Cities/Regencies"
+    },
+    "features": {
+      "title": "Key Features",
+      "budget_visualization": {
+        "title": "Budget Visualization",
+        "description": "Interactive and easy-to-understand charts for budget data"
+      },
+      "regional_comparison": {
+        "title": "Regional Comparison",
+        "description": "Compare budgets across provinces and cities"
+      },
+      "trend_analysis": {
+        "title": "Trend Analysis",
+        "description": "Historical analysis and future budget projections"
+      },
+      "search_explore": {
+        "title": "Search & Explore",
+        "description": "Search for specific budget items with advanced filters"
+      }
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "not_found": "Not found",
+    "search_placeholder": "Search budget...",
+    "filter": "Filter",
+    "sort": "Sort",
+    "export": "Export",
+    "download": "Download",
+    "share": "Share",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "budget": {
+    "revenue": "Revenue",
+    "expenditure": "Expenditure",
+    "deficit": "Deficit",
+    "surplus": "Surplus",
+    "allocation": "Allocation",
+    "realization": "Realization",
+    "categories": {
+      "infrastructure": "Infrastructure",
+      "education": "Education",
+      "health": "Health",
+      "defense": "Defense",
+      "agriculture": "Agriculture",
+      "economy": "Economy",
+      "social": "Social",
+      "environment": "Environment"
+    }
+  },
+  "footer": {
+    "tagline": "Budget Transparency for Public Accountability",
+    "links": {
+      "about": "About",
+      "methodology": "Methodology",
+      "sources": "Data Sources",
+      "contact": "Contact"
+    },
+    "ecosystem": "ForPublic.id Ecosystem",
+    "copyright": "© 2025 ForPublic.id. All rights reserved."
+  }
+}

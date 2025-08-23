@@ -1,0 +1,94 @@
+{
+  "navigation": {
+    "home": "Beranda",
+    "national": "APBN",
+    "regional": "APBD",
+    "compare": "Bandingkan",
+    "trends": "Tren",
+    "categories": "Kategori",
+    "search": "Cari",
+    "methodology": "Metodologi",
+    "about": "Tentang"
+  },
+  "homepage": {
+    "title": "Transparansi Anggaran Indonesia",
+    "subtitle": "Platform transparansi untuk APBN dan APBD Indonesia dengan visualisasi interaktif dan analisis mendalam",
+    "hero": {
+      "title": "Transparansi Anggaran Untuk Semua",
+      "description": "Akses mudah ke data APBN dan APBD Indonesia dengan visualisasi yang mudah dipahami dan analisis yang komprehensif",
+      "cta_primary": "Jelajahi APBN",
+      "cta_secondary": "Lihat APBD"
+    },
+    "stats": {
+      "apbn_title": "APBN 2025",
+      "apbn_amount": "Rp 3.061,4 T",
+      "apbd_title": "Total APBD",
+      "apbd_amount": "Rp 850+ T",
+      "regions": "34 Provinsi",
+      "cities": "500+ Kab/Kota"
+    },
+    "features": {
+      "title": "Fitur Utama",
+      "budget_visualization": {
+        "title": "Visualisasi Anggaran",
+        "description": "Grafik interaktif dan mudah dipahami untuk data anggaran"
+      },
+      "regional_comparison": {
+        "title": "Perbandingan Regional",
+        "description": "Bandingkan anggaran antar provinsi dan kota"
+      },
+      "trend_analysis": {
+        "title": "Analisis Tren",
+        "description": "Analisis historis dan proyeksi anggaran masa depan"
+      },
+      "search_explore": {
+        "title": "Cari & Jelajahi",
+        "description": "Cari item anggaran spesifik dengan filter canggih"
+      }
+    }
+  },
+  "common": {
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "not_found": "Tidak ditemukan",
+    "search_placeholder": "Cari anggaran...",
+    "filter": "Filter",
+    "sort": "Urutkan",
+    "export": "Ekspor",
+    "download": "Unduh",
+    "share": "Bagikan",
+    "close": "Tutup",
+    "back": "Kembali",
+    "next": "Selanjutnya",
+    "previous": "Sebelumnya"
+  },
+  "budget": {
+    "revenue": "Pendapatan",
+    "expenditure": "Belanja",
+    "deficit": "Defisit",
+    "surplus": "Surplus",
+    "allocation": "Alokasi",
+    "realization": "Realisasi",
+    "categories": {
+      "infrastructure": "Infrastruktur",
+      "education": "Pendidikan",
+      "health": "Kesehatan",
+      "defense": "Pertahanan",
+      "agriculture": "Pertanian",
+      "economy": "Ekonomi",
+      "social": "Sosial",
+      "environment": "Lingkungan"
+    }
+  },
+  "footer": {
+    "tagline": "Transparansi Anggaran untuk Akuntabilitas Publik",
+    "links": {
+      "about": "Tentang",
+      "methodology": "Metodologi",
+      "sources": "Sumber Data",
+      "contact": "Kontak"
+    },
+    "ecosystem": "Ekosistem ForPublic.id",
+    "copyright": "© 2025 ForPublic.id. Hak cipta dilindungi."
+  }
+}

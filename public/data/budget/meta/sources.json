@@ -1,0 +1,91 @@
+{
+  "dataSources": [
+    {
+      "id": "djpk-kemenkeu",
+      "name": {
+        "id": "Direktorat Jenderal Perimbangan Keuangan - Kementerian Keuangan RI",
+        "en": "Directorate General of Fiscal Balance - Ministry of Finance"
+      },
+      "url": "https://djpk.kemenkeu.go.id",
+      "type": "government",
+      "reliability": "high",
+      "lastUpdated": "2025-01-15",
+      "coverage": ["APBN", "Transfer Daerah", "Dana Perimbangan"]
+    },
+    {
+      "id": "kemenkeu-ri",
+      "name": {
+        "id": "Kementerian Keuangan Republik Indonesia",
+        "en": "Ministry of Finance of Republic of Indonesia"
+      },
+      "url": "https://kemenkeu.go.id",
+      "type": "government",
+      "reliability": "high",
+      "lastUpdated": "2025-01-15",
+      "coverage": ["APBN", "Pajak", "Fiskal", "APBN-P"]
+    },
+    {
+      "id": "bappenas",
+      "name": {
+        "id": "Badan Perencanaan Pembangunan Nasional",
+        "en": "National Development Planning Agency"
+      },
+      "url": "https://bappenas.go.id",
+      "type": "government",
+      "reliability": "high",
+      "lastUpdated": "2024-12-20",
+      "coverage": ["Perencanaan Anggaran", "RKP", "RPJMN"]
+    },
+    {
+      "id": "bpkad-dki",
+      "name": {
+        "id": "Badan Pengelola Keuangan dan Aset Daerah DKI Jakarta",
+        "en": "Regional Financial and Asset Management Agency of DKI Jakarta"
+      },
+      "url": "https://bpkad.jakarta.go.id",
+      "type": "regional",
+      "reliability": "high",
+      "lastUpdated": "2024-12-15",
+      "coverage": ["APBD DKI Jakarta", "PAD Jakarta", "Belanja Daerah"]
+    },
+    {
+      "id": "bpkad-jabar",
+      "name": {
+        "id": "Badan Pengelola Keuangan dan Aset Daerah Jawa Barat",
+        "en": "Regional Financial and Asset Management Agency of West Java"
+      },
+      "url": "https://bpkad.jabarprov.go.id",
+      "type": "regional",
+      "reliability": "high",
+      "lastUpdated": "2024-12-10",
+      "coverage": ["APBD Jawa Barat", "PAD Jabar", "Transfer ke Kabupaten/Kota"]
+    }
+  ],
+  "methodology": {
+    "dataCollection": {
+      "id": "Data dikumpulkan dari sumber resmi pemerintah pusat dan daerah melalui publikasi APBN/APBD, laporan realisasi anggaran, dan portal data terbuka pemerintah.",
+      "en": "Data collected from official central and regional government sources through APBN/APBD publications, budget realization reports, and government open data portals."
+    },
+    "processing": {
+      "id": "Data diproses dan dinormalisasi untuk konsistensi format, kemudian divalidasi terhadap sumber primer dan publikasi resmi.",
+      "en": "Data is processed and normalized for format consistency, then validated against primary sources and official publications."
+    },
+    "validation": {
+      "id": "Validasi dilakukan melalui cross-reference dengan multiple sumber, verifikasi total anggaran, dan konsistensi temporal data.",
+      "en": "Validation performed through cross-reference with multiple sources, budget total verification, and temporal data consistency."
+    },
+    "limitations": {
+      "id": [
+        "Data APBD tidak semua tersedia real-time, tergantung publikasi masing-masing daerah",
+        "Beberapa komponen anggaran mungkin menggunakan kategorisasi yang berbeda antar daerah",
+        "Data realisasi anggaran memiliki lag time 1-3 bulan dari periode pelaporan"
+      ],
+      "en": [
+        "APBD data is not all available in real-time, depending on each region's publication schedule",
+        "Some budget components may use different categorization across regions",
+        "Budget realization data has a 1-3 month lag time from the reporting period"
+      ]
+    },
+    "updateFrequency": "Monthly for realization data, Quarterly for revised budgets, Annually for new budget allocations"
+  }
+}

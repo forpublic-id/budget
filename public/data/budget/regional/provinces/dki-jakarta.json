@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "year": 2025,
+    "type": "APBD",
+    "region": "DKI Jakarta",
+    "lastUpdated": "2024-12-15",
+    "source": "BPKAD DKI Jakarta",
+    "currency": "IDR",
+    "population": 10700000,
+    "level": "province"
+  },
+  "revenue": {
+    "total": 82500000000000,
+    "sources": {
+      "tax": 58200000000000,
+      "non_tax": 15800000000000,
+      "grants": 5200000000000,
+      "other": 3300000000000
+    },
+    "breakdown": {
+      "pajak_daerah": 58200000000000,
+      "retribusi_daerah": 8500000000000,
+      "hasil_kekayaan_daerah": 7300000000000,
+      "dana_alokasi_umum": 2800000000000,
+      "dana_alokasi_khusus": 2400000000000,
+      "dana_bagi_hasil": 3300000000000
+    }
+  },
+  "expenditure": {
+    "total": 79800000000000,
+    "categories": {
+      "infrastruktur": 18500000000000,
+      "pendidikan": 15200000000000,
+      "kesehatan": 12800000000000,
+      "transportasi": 14200000000000,
+      "lingkungan": 8900000000000,
+      "perumahan": 6200000000000,
+      "ekonomi": 3200000000000,
+      "sosial": 800000000000
+    },
+    "breakdown": {
+      "operational": 42500000000000,
+      "capital": 28200000000000,
+      "transfer": 9100000000000
+    }
+  },
+  "surplus": 2700000000000
+}
