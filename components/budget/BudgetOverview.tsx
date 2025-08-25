@@ -67,7 +67,13 @@ export default function BudgetOverview({
     .sort(([, a], [, b]) => b - a)
     .slice(0, 5)
     .map(([category, amount]) => ({
-      category: t(`categories.${category}`) || category,
+      category: (() => {
+        try {
+          return t(`categories.${category}` as any);
+        } catch {
+          return category;
+        }
+      })(),
       amount,
       percentage: calculatePercentage(amount, data.expenditure.total),
     }));
