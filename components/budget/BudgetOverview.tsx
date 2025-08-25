@@ -3,8 +3,18 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import { TrendingUp, TrendingDown, DollarSign, PieChart } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
-import { formatBudgetAmount, formatPercentage, calculatePercentage } from "@/lib/utils";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/Card";
+import {
+  formatBudgetAmount,
+  formatPercentage,
+  calculatePercentage,
+} from "@/lib/utils";
 import type { BudgetData } from "@/lib/types/budget";
 
 interface BudgetOverviewProps {
@@ -12,13 +22,19 @@ interface BudgetOverviewProps {
   locale?: string;
 }
 
-export default function BudgetOverview({ data, locale = "id-ID" }: BudgetOverviewProps) {
+export default function BudgetOverview({
+  data,
+  locale = "id-ID",
+}: BudgetOverviewProps) {
   const t = useTranslations("budget");
-  const tCommon = useTranslations("common");
+  // const tCommon = useTranslations("common"); // reserved for future shared labels
 
   const isDeficit = data.expenditure.total > data.revenue.total;
   const balanceAmount = Math.abs(data.expenditure.total - data.revenue.total);
-  const deficitPercentage = calculatePercentage(balanceAmount, data.revenue.total);
+  const deficitPercentage = calculatePercentage(
+    balanceAmount,
+    data.revenue.total,
+  );
 
   const stats = [
     {
@@ -65,7 +81,9 @@ export default function BudgetOverview({ data, locale = "id-ID" }: BudgetOvervie
           return (
             <Card key={stat.title}>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  {stat.title}
+                </CardTitle>
                 <div className={`p-2 rounded-lg ${stat.bgColor}`}>
                   <IconComponent className={`h-4 w-4 ${stat.color}`} />
                 </div>
@@ -92,7 +110,10 @@ export default function BudgetOverview({ data, locale = "id-ID" }: BudgetOvervie
         <CardContent>
           <div className="space-y-4">
             {topCategories.map((item, index) => (
-              <div key={item.category} className="flex items-center justify-between">
+              <div
+                key={item.category}
+                className="flex items-center justify-between"
+              >
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                     <span className="text-sm font-medium text-primary">
@@ -125,7 +146,9 @@ export default function BudgetOverview({ data, locale = "id-ID" }: BudgetOvervie
         <CardContent>
           <dl className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
-              <dt className="font-medium text-muted-foreground">Tahun Anggaran</dt>
+              <dt className="font-medium text-muted-foreground">
+                Tahun Anggaran
+              </dt>
               <dd>{data.metadata.year}</dd>
             </div>
             <div>
@@ -141,8 +164,12 @@ export default function BudgetOverview({ data, locale = "id-ID" }: BudgetOvervie
               <dd>{data.metadata.source}</dd>
             </div>
             <div>
-              <dt className="font-medium text-muted-foreground">Terakhir Diperbarui</dt>
-              <dd>{new Date(data.metadata.lastUpdated).toLocaleDateString(locale)}</dd>
+              <dt className="font-medium text-muted-foreground">
+                Terakhir Diperbarui
+              </dt>
+              <dd>
+                {new Date(data.metadata.lastUpdated).toLocaleDateString(locale)}
+              </dd>
             </div>
             {data.metadata.population && (
               <div>

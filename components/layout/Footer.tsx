@@ -4,7 +4,9 @@ import { PieChart, ExternalLink } from "lucide-react";
 
 export function Footer() {
   const t = useTranslations("footer");
-  const currentYear = new Date().getFullYear();
+  // Avoid dynamic year mismatch by using a fixed build-time year (updated during deployment) to keep SSR/CSR consistent.
+  // If real-time year rollover is desired, move this logic into a client component with useEffect.
+  const BUILD_YEAR = 2025; // update annually if needed
 
   const ecosystemApps = [
     {
@@ -105,9 +107,7 @@ export function Footer() {
               </div>
               <div>
                 <p className="text-sm font-medium">Update Terakhir</p>
-                <p className="text-xs text-muted-foreground">
-                  Januari 2025
-                </p>
+                <p className="text-xs text-muted-foreground">Januari 2025</p>
               </div>
               <div>
                 <p className="text-sm font-medium">Lisensi</p>
@@ -123,7 +123,7 @@ export function Footer() {
         <div className="border-t pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-xs text-muted-foreground">
-              {t("copyright").replace("2025", currentYear.toString())}
+              {t("copyright").replace("2025", BUILD_YEAR.toString())}
             </p>
             <div className="flex items-center space-x-6">
               <Link
