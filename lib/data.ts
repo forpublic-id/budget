@@ -17,7 +17,15 @@ export async function fetchBudgetData(
       url = `${BASE_URL}/regional/${identifier}.json`;
     }
 
-    const response = await fetch(url);
+    // For server-side rendering, construct absolute URL
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:3000' 
+        : 'https://budget.forpublic.id';
+    
+    const fullUrl = url.startsWith('/') ? `${baseUrl}${url}` : url;
+    const response = await fetch(fullUrl);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch budget data: ${response.statusText}`);
@@ -48,7 +56,13 @@ export async function fetchBudgetRealization(year: number): Promise<BudgetData> 
 
 export async function fetchDataSources(): Promise<DataSource[]> {
   try {
-    const response = await fetch(`${BASE_URL}/meta/sources.json`);
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:3000' 
+        : 'https://budget.forpublic.id';
+    
+    const response = await fetch(`${baseUrl}${BASE_URL}/meta/sources.json`);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch data sources: ${response.statusText}`);
@@ -64,7 +78,13 @@ export async function fetchDataSources(): Promise<DataSource[]> {
 
 export async function fetchMethodology(): Promise<MethodologyInfo | null> {
   try {
-    const response = await fetch(`${BASE_URL}/meta/sources.json`);
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:3000' 
+        : 'https://budget.forpublic.id';
+    
+    const response = await fetch(`${baseUrl}${BASE_URL}/meta/sources.json`);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch methodology: ${response.statusText}`);
@@ -84,7 +104,13 @@ export async function fetchBudgetTrends(region?: string): Promise<any[]> {
       ? `${BASE_URL}/analysis/regional-trends.json` 
       : `${BASE_URL}/analysis/trends.json`;
     
-    const response = await fetch(url);
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:3000' 
+        : 'https://budget.forpublic.id';
+    
+    const response = await fetch(`${baseUrl}${url}`);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch budget trends: ${response.statusText}`);
@@ -100,7 +126,13 @@ export async function fetchBudgetTrends(region?: string): Promise<any[]> {
 
 export async function fetchBudgetComparisons(): Promise<any[]> {
   try {
-    const response = await fetch(`${BASE_URL}/analysis/comparisons.json`);
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:3000' 
+        : 'https://budget.forpublic.id';
+    
+    const response = await fetch(`${baseUrl}${BASE_URL}/analysis/comparisons.json`);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch budget comparisons: ${response.statusText}`);
@@ -116,7 +148,13 @@ export async function fetchBudgetComparisons(): Promise<any[]> {
 
 export async function fetchBudgetEfficiency(): Promise<any[]> {
   try {
-    const response = await fetch(`${BASE_URL}/analysis/efficiency.json`);
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:3000' 
+        : 'https://budget.forpublic.id';
+    
+    const response = await fetch(`${baseUrl}${BASE_URL}/analysis/efficiency.json`);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch budget efficiency: ${response.statusText}`);

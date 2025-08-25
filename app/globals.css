@@ -32,8 +32,7 @@
 
 :root {
   --radius: 0.625rem;
-  
-  /* Light backgrounds - clean and professional */
+  /* Light backgrounds - bright and clean */
   --background: oklch(0.99 0 0);
   --foreground: oklch(0.15 0 0);
   --card: oklch(1 0 0);
@@ -41,22 +40,22 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0 0);
 
-  /* Budget Red - representing transparency and accountability */
-  --primary: oklch(0.55 0.22 20); /* Red color for budget theme */
+  /* Ocean Blue "Transparansi Biru" - melambangkan kepercayaan dan stabilitas */
+  --primary: oklch(0.55 0.15 250);
   --primary-foreground: oklch(0.98 0 0);
 
-  /* Soft secondary colors - neutral gray tones */
-  --secondary: oklch(0.96 0.01 0);
-  --secondary-foreground: oklch(0.25 0.01 0);
-  --muted: oklch(0.97 0.01 0);
-  --muted-foreground: oklch(0.48 0.01 0);
-  --accent: oklch(0.94 0.01 0);
-  --accent-foreground: oklch(0.28 0.01 0);
+  /* Soft secondary colors - biru lembut untuk harmony */
+  --secondary: oklch(0.96 0.02 250);
+  --secondary-foreground: oklch(0.25 0.12 250);
+  --muted: oklch(0.97 0.01 250);
+  --muted-foreground: oklch(0.48 0.06 250);
+  --accent: oklch(0.94 0.03 250);
+  --accent-foreground: oklch(0.28 0.15 250);
 
-  /* Borders and inputs - neutral grays */
-  --border: oklch(0.88 0.01 0);
-  --input: oklch(0.94 0.01 0);
-  --ring: oklch(0.55 0.22 20);
+  /* Borders and inputs - biru natural */
+  --border: oklch(0.88 0.02 250);
+  --input: oklch(0.94 0.02 250);
+  --ring: oklch(0.55 0.15 250);
   --destructive: oklch(0.55 0.25 15);
 }
 
@@ -67,7 +66,7 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.65 0.22 20); /* Slightly lighter red for dark mode */
+  --primary: oklch(0.65 0.15 250);
   --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
@@ -78,8 +77,9 @@
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.65 0.22 20);
+  --ring: oklch(0.65 0.15 250);
 }
+
 
 @layer base {
   * {

@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { ArrowRight, PieChart, MapPin, BarChart3, TrendingUp } from "lucide-react";
@@ -58,7 +57,7 @@ async function BudgetPreview({ locale }: { locale: string }) {
 
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
-  const t = useTranslations("homepage");
+  const t = await getTranslations({ locale, namespace: "homepage" });
   
   const features = [
     {
