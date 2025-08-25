@@ -17,16 +17,17 @@ export const metadata: Metadata = {
     template: "%s | Budget ForPublic.id",
     default: "Budget ForPublic.id - Transparansi Anggaran Indonesia",
   },
-  description: "Platform transparansi untuk APBN dan APBD Indonesia dengan visualisasi interaktif dan analisis mendalam",
+  description:
+    "Platform transparansi untuk APBN dan APBD Indonesia dengan visualisasi interaktif dan analisis mendalam",
   keywords: [
     "APBN",
-    "APBD", 
+    "APBD",
     "anggaran negara",
     "transparansi",
     "keuangan publik",
     "Indonesia",
     "visualisasi data",
-    "budget transparency"
+    "budget transparency",
   ],
   authors: [{ name: "ForPublic.id" }],
   creator: "ForPublic.id",
@@ -47,13 +48,15 @@ export const metadata: Metadata = {
     locale: "id_ID",
     url: "https://budget.forpublic.id",
     title: "Budget ForPublic.id - Transparansi Anggaran Indonesia",
-    description: "Platform transparansi untuk APBN dan APBD Indonesia dengan visualisasi interaktif dan analisis mendalam",
+    description:
+      "Platform transparansi untuk APBN dan APBD Indonesia dengan visualisasi interaktif dan analisis mendalam",
     siteName: "Budget ForPublic.id",
   },
   twitter: {
     card: "summary_large_image",
     title: "Budget ForPublic.id - Transparansi Anggaran Indonesia",
-    description: "Platform transparansi untuk APBN dan APBD Indonesia dengan visualisasi interaktif dan analisis mendalam",
+    description:
+      "Platform transparansi untuk APBN dan APBD Indonesia dengan visualisasi interaktif dan analisis mendalam",
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
@@ -66,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" suppressHydrationWarning>
+    <html lang="id">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
