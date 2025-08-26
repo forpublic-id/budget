@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
-import { Menu, X, PieChart } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
@@ -39,9 +39,13 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center space-x-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
-              <PieChart className="h-5 w-5" />
-            </div>
+            <Image 
+              src="/logo.svg" 
+              alt="Budget ForPublic.id Logo" 
+              width={32} 
+              height={32}
+              className="h-8 w-8"
+            />
             <div className="flex flex-col min-w-0">
               <span className="text-xl font-bold text-foreground whitespace-nowrap">
                 Budget <span className="text-primary">ForPublic</span>
@@ -87,7 +91,7 @@ export function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden text-black hover:text-black"
             onClick={toggleMobileMenu}
           >
             {mobileMenuOpen ? (

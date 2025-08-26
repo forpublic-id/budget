@@ -35,7 +35,11 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
       <Button
         variant={currentLocale === "id" ? "default" : "ghost"}
         size="sm"
-        className="h-8 px-3 flex items-center gap-1.5"
+        className={`h-8 px-3 flex items-center gap-1.5 ${
+          currentLocale === "id" 
+            ? "bg-black text-white hover:bg-black/90" 
+            : "text-black hover:text-black"
+        }`}
         disabled={isPending}
         onClick={() => handleLanguageSwitch("id")}
       >
@@ -45,7 +49,11 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: string }) {
       <Button
         variant={currentLocale === "en" ? "default" : "ghost"}
         size="sm"
-        className="h-8 px-3 flex items-center gap-1.5"
+        className={`h-8 px-3 flex items-center gap-1.5 ${
+          currentLocale === "en" 
+            ? "bg-black text-white hover:bg-black/90" 
+            : "text-black hover:text-black"
+        }`}
         disabled={isPending}
         onClick={() => handleLanguageSwitch("en")}
       >

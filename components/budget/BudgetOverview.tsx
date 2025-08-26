@@ -49,7 +49,7 @@ export default function BudgetOverview({
       title: t("expenditure"),
       value: formatBudgetAmount(data.expenditure.total, locale),
       icon: PieChart,
-      color: "text-blue-600",
+      color: "text-blue-800",
       bgColor: "bg-blue-50",
       description: "Total belanja negara",
     },

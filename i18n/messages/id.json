@@ -17,15 +17,18 @@
       "title": "Transparansi Anggaran Untuk Semua",
       "description": "Akses mudah ke data APBN dan APBD Indonesia dengan visualisasi yang mudah dipahami dan analisis yang komprehensif",
       "cta_primary": "Jelajahi APBN",
-      "cta_secondary": "Lihat APBD"
+      "cta_secondary": "Lihat APBD",
+      "badge": "Platform Transparansi Anggaran Berbasis Komunitas"
     },
     "stats": {
       "apbn_title": "APBN 2025",
-      "apbn_amount": "Rp 3.061,4 T",
+      "apbn_amount": "Rp 2.701,4 T",
       "apbd_title": "Total APBD",
-      "apbd_amount": "Rp 850+ T",
+      "apbd_amount": "Rp 920+ T",
       "regions": "34 Provinsi",
-      "cities": "500+ Kab/Kota"
+      "cities": "514 Kab/Kota",
+      "coverage_title": "Cakupan Data",
+      "cities_title": "Kab/Kota"
     },
     "features": {
       "title": "Fitur Utama",
@@ -45,10 +48,25 @@
         "title": "Cari & Jelajahi",
         "description": "Cari item anggaran spesifik dengan filter canggih"
       }
+    },
+    "budget_preview": {
+      "title": "Ringkasan APBN 2025",
+      "description": "Gambaran umum anggaran pendapatan dan belanja negara tahun ini",
+      "structure_title": "Struktur APBN 2025",
+      "structure_description": "Distribusi belanja berdasarkan kategori"
+    },
+    "features_description": "Jelajahi fitur-fitur yang membantu memahami anggaran pemerintah",
+    "cta": {
+      "title": "Mulai Jelajahi Transparansi Anggaran",
+      "description": "Dapatkan akses ke data APBN dan APBD terlengkap dengan analisis mendalam",
+      "button_national": "Lihat APBN",
+      "button_regional": "Jelajahi APBD"
     }
   },
   "common": {
     "loading": "Memuat...",
+    "loading_budget": "Memuat data anggaran...",
+    "loading_budget_pending": "Data anggaran sedang dimuat...",
     "error": "Terjadi kesalahan",
     "not_found": "Tidak ditemukan",
     "search_placeholder": "Cari anggaran...",
@@ -94,7 +112,10 @@
   },
   "footer": {
     "tagline": "Transparansi Anggaran untuk Akuntabilitas Publik",
+    "mission": "Inisiatif komunitas terbuka untuk mempermudah akses informasi anggaran pemerintah Indonesia. Platform ini dikelola oleh relawan dan bukan merupakan platform resmi pemerintah.",
     "links": {
+      "national": "APBN",
+      "regional": "APBD",
       "about": "Tentang",
       "methodology": "Metodologi",
       "sources": "Sumber Data",

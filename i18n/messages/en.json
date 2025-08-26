@@ -17,15 +17,18 @@
       "title": "Budget Transparency For All",
       "description": "Easy access to Indonesian national and regional budget data with understandable visualizations and comprehensive analysis",
       "cta_primary": "Explore National Budget",
-      "cta_secondary": "View Regional Budgets"
+      "cta_secondary": "View Regional Budgets",
+      "badge": "Community-Driven Budget Transparency Platform"
     },
     "stats": {
       "apbn_title": "National Budget 2025",
-      "apbn_amount": "IDR 3,061.4 T",
-      "apbd_title": "Total Regional Budgets",
-      "apbd_amount": "IDR 850+ T",
+      "apbn_amount": "IDR 2,701.4 T",
+      "apbd_title": "Total Regional Budgets", 
+      "apbd_amount": "IDR 920+ T",
       "regions": "34 Provinces",
-      "cities": "500+ Cities/Regencies"
+      "cities": "514 Cities/Regencies",
+      "coverage_title": "Data Coverage",
+      "cities_title": "Cities/Regencies"
     },
     "features": {
       "title": "Key Features",
@@ -45,10 +48,25 @@
         "title": "Search & Explore",
         "description": "Search for specific budget items with advanced filters"
       }
+    },
+    "budget_preview": {
+      "title": "National Budget 2025 Overview",
+      "description": "General overview of this year's national revenue and expenditure budget",
+      "structure_title": "National Budget 2025 Structure",
+      "structure_description": "Expenditure distribution by category"
+    },
+    "features_description": "Explore features that help understand government budgets",
+    "cta": {
+      "title": "Start Exploring Budget Transparency",
+      "description": "Get access to the most comprehensive national and regional budget data with in-depth analysis",
+      "button_national": "View National Budget",
+      "button_regional": "Explore Regional Budgets"
     }
   },
   "common": {
     "loading": "Loading...",
+    "loading_budget": "Loading budget data...",
+    "loading_budget_pending": "Budget data is loading...",
     "error": "An error occurred",
     "not_found": "Not found",
     "search_placeholder": "Search budget...",
@@ -94,7 +112,10 @@
   },
   "footer": {
     "tagline": "Budget Transparency for Public Accountability",
+    "mission": "Open community initiative to facilitate access to Indonesian government budget information. This platform is managed by volunteers and is not an official government platform.",
     "links": {
+      "national": "National Budget",
+      "regional": "Regional Budget",
       "about": "About",
       "methodology": "Methodology",
       "sources": "Data Sources",

@@ -29,15 +29,15 @@ interface BudgetChartProps {
 
 const CHART_COLORS = [
   "#dc2626", // Red (primary)
+  "#2563eb", // Blue  
+  "#059669", // Green
   "#ea580c", // Orange
-  "#ca8a04", // Yellow
-  "#65a30d", // Green
-  "#0891b2", // Cyan
-  "#2563eb", // Blue
   "#7c3aed", // Purple
+  "#0891b2", // Cyan
+  "#ca8a04", // Yellow
   "#be185d", // Pink
-  "#059669", // Emerald
   "#0d9488", // Teal
+  "#65a30d", // Lime
 ];
 
 export default function BudgetChart({
@@ -79,14 +79,14 @@ export default function BudgetChart({
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
-        <div className="bg-background border border-border rounded-lg p-3 shadow-lg">
-          <p className="font-medium">{data.name || data.category}</p>
-          <p className="text-sm text-muted-foreground">
+        <div className="bg-white border border-gray-200 rounded-lg p-3 shadow-lg">
+          <p className="font-semibold text-gray-900">{data.name || data.category}</p>
+          <p className="text-sm text-gray-600">
             {formatBudgetAmount(data.value || data.amount, locale)}
           </p>
           {data.percentage && (
-            <p className="text-sm text-muted-foreground">
-              {formatPercentage(data.percentage)}
+            <p className="text-sm text-gray-500">
+              {formatPercentage(data.percentage)}%
             </p>
           )}
         </div>
@@ -102,17 +102,22 @@ export default function BudgetChart({
           data={chartData}
           cx="50%"
           cy="50%"
-          innerRadius={60}
-          outerRadius={120}
-          paddingAngle={2}
+          innerRadius={50}
+          outerRadius={130}
+          paddingAngle={1}
           dataKey="value"
+          stroke="#fff"
+          strokeWidth={2}
         >
           {chartData.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={entry.color} />
           ))}
         </Pie>
         {showTooltip && <Tooltip content={<CustomTooltip />} />}
-        <Legend />
+        <Legend 
+          wrapperStyle={{ paddingTop: '20px' }}
+          iconType="circle"
+        />
       </PieChart>
     </ResponsiveContainer>
   );
@@ -158,7 +163,7 @@ export default function BudgetChart({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-white rounded-lg">
       {renderChart()}
     </div>
   );
