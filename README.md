@@ -14,24 +14,28 @@ Budget ForPublic.id is a comprehensive transparency platform providing access to
 ## Features
 
 ### 📊 **Interactive Budget Visualizations**
+
 - Multi-format charts (pie, bar, line, treemap) for budget analysis
 - Real-time data transformation and filtering
 - Responsive design for mobile and desktop
 - Custom tooltips with formatted currency and percentages
 
 ### 🏛️ **Comprehensive Budget Coverage**
+
 - **APBN (National Budget)**: Complete national government budget data
 - **APBD (Regional Budgets)**: Provincial and city/regency budget information
 - **Historical Data**: Budget trends and year-over-year comparisons
 - **Realization Tracking**: Budget execution vs. planned allocations
 
 ### 🔍 **Advanced Analysis Tools**
+
 - Budget comparison across regions and years
 - Per-capita spending analysis
 - Efficiency metrics and performance indicators
 - Trend analysis with growth calculations
 
 ### 🌍 **Bilingual Support**
+
 - Complete Indonesian and English localization
 - Locale-appropriate number and currency formatting
 - Cultural adaptation of budget terminology
@@ -39,28 +43,33 @@ Budget ForPublic.id is a comprehensive transparency platform providing access to
 ## Tech Stack
 
 ### Core Framework
+
 - **Next.js 15** with App Router and React 19
 - **TypeScript** for comprehensive type safety
 - **Bun** runtime for optimal performance
 
-### UI & Styling  
+### UI & Styling
+
 - **Tailwind CSS v4** with custom design tokens
 - **shadcn/ui** component library
 - **Lucide React** icons
 - **Geist** font family
 
 ### Data Visualization
+
 - **Recharts** for interactive charts
 - **D3.js** for advanced visualizations
 - Custom budget-themed components
 
 ### Internationalization
+
 - **next-intl** for bilingual routing and translations
 - **Dynamic locale switching** with URL-based routing
 
 ## Quick Start
 
 ### Prerequisites
+
 - **Bun** (recommended) or Node.js 18+
 - Git for version control
 
@@ -145,6 +154,7 @@ budget/
 ## Data Architecture
 
 ### Budget Data Format
+
 ```typescript
 interface BudgetData {
   metadata: {
@@ -158,13 +168,13 @@ interface BudgetData {
   };
   revenue: {
     total: number;
-    sources: { tax: number; non_tax: number; };
-    breakdown: { [key: string]: number; };
+    sources: { tax: number; non_tax: number };
+    breakdown: { [key: string]: number };
   };
   expenditure: {
     total: number;
-    categories: { [category: string]: number; };
-    breakdown: { operational: number; capital: number; };
+    categories: { [category: string]: number };
+    breakdown: { operational: number; capital: number };
   };
 }
 ```
@@ -172,22 +182,25 @@ interface BudgetData {
 ### Key Features Implemented
 
 #### **Interactive Budget Charts**
+
 - Pie charts for budget distribution
-- Bar charts for category comparisons  
+- Bar charts for category comparisons
 - Line charts for trend analysis
 - Custom formatting for Indonesian currency (Rupiah)
 
 #### **Budget Overview Dashboard**
+
 - Revenue vs expenditure comparison
 - Top spending categories with percentages
 - Deficit/surplus calculation and analysis
 - Data source attribution and freshness
 
 #### **Utility Functions**
+
 ```typescript
-formatBudgetAmount(2740500000000000) // "Rp 2,741 T"
-calculatePercentage(450000000000000, 3061400000000000) // 14.7%
-formatPercentage(14.7) // "14.7%"
+formatBudgetAmount(2740500000000000); // "Rp 2,741 T"
+calculatePercentage(450000000000000, 3061400000000000); // 14.7%
+formatPercentage(14.7); // "14.7%"
 ```
 
 ## Data Sources
@@ -202,9 +215,9 @@ formatPercentage(14.7) // "14.7%"
 Budget ForPublic.id is part of the comprehensive ForPublic.id transparency ecosystem:
 
 - **[ForPublic.id](https://forpublic.id)** - Main transparency platform
-- **[Salary.ForPublic.id](https://salary.forpublic.id)** - Government salary transparency  
+- **[Salary.ForPublic.id](https://salary.forpublic.id)** - Government salary transparency
 - **[Holiday.ForPublic.id](https://holiday.forpublic.id)** - National holiday calendar
-- **Budget.ForPublic.id** - Government budget transparency *(this project)*
+- **Budget.ForPublic.id** - Government budget transparency _(this project)_
 
 ## Performance
 
@@ -216,6 +229,7 @@ Budget ForPublic.id is part of the comprehensive ForPublic.id transparency ecosy
 ## Deployment
 
 ### Vercel (Recommended)
+
 ```bash
 # Deploy to Vercel
 vercel --prod
@@ -225,6 +239,7 @@ NEXT_PUBLIC_GA_ID=your_analytics_id
 ```
 
 ### Docker
+
 ```dockerfile
 FROM oven/bun:1 as base
 WORKDIR /app
@@ -246,6 +261,7 @@ CMD ["bun", "run", "start"]
 6. **Submit a pull request**
 
 ### Development Guidelines
+
 - **Consistency**: Follow ForPublic.id ecosystem patterns
 - **Accessibility**: WCAG 2.1 AA compliance required
 - **Performance**: Optimize for large budget datasets

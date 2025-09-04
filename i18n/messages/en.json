@@ -23,7 +23,7 @@
     "stats": {
       "apbn_title": "National Budget 2025",
       "apbn_amount": "IDR 2,701.4 T",
-      "apbd_title": "Total Regional Budgets", 
+      "apbd_title": "Total Regional Budgets",
       "apbd_amount": "IDR 920+ T",
       "regions": "34 Provinces",
       "cities": "514 Cities/Regencies",
@@ -101,6 +101,9 @@
       "pariwisata": "Tourism",
       "pertanian": "Agriculture",
       "energi": "Energy",
+      "ketahanan_pangan": "Food Security",
+      "makan_bergizi": "Nutritious Food",
+      "energi_subsidi": "Energy Subsidies",
       "education": "Education",
       "health": "Health",
       "defense": "Defense",
@@ -109,6 +112,56 @@
       "social": "Social",
       "environment": "Environment"
     }
+  },
+  "about": {
+    "title": "About Budget ForPublic.id",
+    "subtitle": "Community-driven budget transparency platform",
+    "mission": "Making public budget information accessible to everyone",
+    "features": {
+      "title": "Key Features",
+      "visualization": "Interactive budget data visualization",
+      "comparison": "Regional budget comparison",
+      "analysis": "Trend analysis and projections",
+      "search": "Advanced search and filtering"
+    },
+    "data_sources": "Data Sources",
+    "methodology": "Methodology",
+    "disclaimer": "This platform is developed by the community and is not part of the government."
+  },
+  "national": {
+    "title": "National Budget (APBN)",
+    "subtitle": "Comprehensive Indonesian APBN data with in-depth analysis",
+    "overview": "APBN Overview",
+    "details": "Budget Details",
+    "year_selection": "Select Year"
+  },
+  "regional": {
+    "title": "Regional Budget (APBD)",
+    "subtitle": "Explore provincial and city/regency budgets",
+    "provinces": "Provinces",
+    "cities": "Cities/Regencies",
+    "select_region": "Select Region"
+  },
+  "compare": {
+    "title": "Budget Comparison",
+    "subtitle": "Compare budgets across regions",
+    "metrics": "Comparison Metrics",
+    "table_view": "Table View",
+    "chart_view": "Chart View"
+  },
+  "trends": {
+    "title": "Trend Analysis",
+    "subtitle": "Historical analysis and budget projections",
+    "period": "Period",
+    "growth": "Growth",
+    "insights": "Key Insights"
+  },
+  "search": {
+    "title": "Budget Search",
+    "subtitle": "Search for specific budget items",
+    "filters": "Filters",
+    "results": "Search Results",
+    "export": "Export Results"
   },
   "footer": {
     "tagline": "Budget Transparency for Public Accountability",

@@ -62,7 +62,9 @@ export function Footer() {
               rel="noopener noreferrer"
               className="text-neutral-300 hover:text-neutral-100 transition-colors"
             >
-              {currentLocale === "id" ? "Salary ForPublic.id" : "Salary ForPublic.id"}
+              {currentLocale === "id"
+                ? "Salary ForPublic.id"
+                : "Salary ForPublic.id"}
             </Link>
             <span className="hidden sm:inline text-neutral-600">•</span>
             <Link
@@ -71,7 +73,9 @@ export function Footer() {
               rel="noopener noreferrer"
               className="text-neutral-300 hover:text-neutral-100 transition-colors"
             >
-              {currentLocale === "id" ? "Plan ForPublic.id" : "Plan ForPublic.id"}
+              {currentLocale === "id"
+                ? "Plan ForPublic.id"
+                : "Plan ForPublic.id"}
             </Link>
             <span className="hidden sm:inline text-neutral-600">•</span>
             <Link

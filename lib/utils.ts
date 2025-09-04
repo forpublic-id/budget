@@ -21,7 +21,10 @@ export function formatNumber(number: number, locale: string = "id-ID"): string {
   return new Intl.NumberFormat(locale).format(number);
 }
 
-export function formatBudgetAmount(amount: number, locale: string = "id-ID"): string {
+export function formatBudgetAmount(
+  amount: number,
+  locale: string = "id-ID",
+): string {
   // Format large budget amounts with appropriate suffixes
   if (amount >= 1e15) {
     return `${formatNumber(amount / 1e15, locale)} PB`; // Petabucks (1000T)
@@ -58,7 +61,10 @@ export function slugify(text: string): string {
     .trim();
 }
 
-export function formatDate(date: string | Date, locale: string = "id-ID"): string {
+export function formatDate(
+  date: string | Date,
+  locale: string = "id-ID",
+): string {
   const dateObj = typeof date === "string" ? new Date(date) : date;
   return dateObj.toLocaleDateString(locale, {
     year: "numeric",
@@ -69,7 +75,7 @@ export function formatDate(date: string | Date, locale: string = "id-ID"): strin
 
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
-  wait: number
+  wait: number,
 ): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout;
   return (...args: Parameters<T>) => {
@@ -80,7 +86,7 @@ export function debounce<T extends (...args: any[]) => any>(
 
 export function throttle<T extends (...args: any[]) => any>(
   func: T,
-  limit: number
+  limit: number,
 ): (...args: Parameters<T>) => void {
   let inThrottle: boolean;
   return (...args: Parameters<T>) => {

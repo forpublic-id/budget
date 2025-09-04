@@ -15,7 +15,11 @@ import {
   Legend,
 } from "recharts";
 import { useTranslations } from "next-intl";
-import { formatBudgetAmount, formatPercentage, calculatePercentage } from "@/lib/utils";
+import {
+  formatBudgetAmount,
+  formatPercentage,
+  calculatePercentage,
+} from "@/lib/utils";
 import type { BudgetData, ChartType } from "@/lib/types/budget";
 
 interface BudgetChartProps {
@@ -29,7 +33,7 @@ interface BudgetChartProps {
 
 const CHART_COLORS = [
   "#dc2626", // Red (primary)
-  "#2563eb", // Blue  
+  "#2563eb", // Blue
   "#059669", // Green
   "#ea580c", // Orange
   "#7c3aed", // Purple
@@ -54,19 +58,23 @@ export default function BudgetChart({
   const transformDataForChart = () => {
     switch (type) {
       case "pie":
-        return Object.entries(data.expenditure.categories).map(([key, value], index) => ({
-          name: t(`categories.${key}`) || key,
-          value,
-          percentage: calculatePercentage(value, data.expenditure.total),
-          color: CHART_COLORS[index % CHART_COLORS.length],
-        }));
+        return Object.entries(data.expenditure.categories).map(
+          ([key, value], index) => ({
+            name: t(`categories.${key}`) || key,
+            value,
+            percentage: calculatePercentage(value, data.expenditure.total),
+            color: CHART_COLORS[index % CHART_COLORS.length],
+          }),
+        );
 
       case "bar":
-        return Object.entries(data.expenditure.categories).map(([key, value], index) => ({
-          category: t(`categories.${key}`) || key,
-          amount: value,
-          color: CHART_COLORS[index % CHART_COLORS.length],
-        }));
+        return Object.entries(data.expenditure.categories).map(
+          ([key, value], index) => ({
+            category: t(`categories.${key}`) || key,
+            amount: value,
+            color: CHART_COLORS[index % CHART_COLORS.length],
+          }),
+        );
 
       default:
         return [];
@@ -80,7 +88,9 @@ export default function BudgetChart({
       const data = payload[0].payload;
       return (
         <div className="bg-white border border-gray-200 rounded-lg p-3 shadow-lg">
-          <p className="font-semibold text-gray-900">{data.name || data.category}</p>
+          <p className="font-semibold text-gray-900">
+            {data.name || data.category}
+          </p>
           <p className="text-sm text-gray-600">
             {formatBudgetAmount(data.value || data.amount, locale)}
           </p>
@@ -114,26 +124,26 @@ export default function BudgetChart({
           ))}
         </Pie>
         {showTooltip && <Tooltip content={<CustomTooltip />} />}
-        <Legend 
-          wrapperStyle={{ paddingTop: '20px' }}
-          iconType="circle"
-        />
+        <Legend wrapperStyle={{ paddingTop: "20px" }} iconType="circle" />
       </PieChart>
     </ResponsiveContainer>
   );
 
   const renderBarChart = () => (
     <ResponsiveContainer width="100%" height={height}>
-      <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+      <BarChart
+        data={chartData}
+        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+      >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis 
-          dataKey="category" 
+        <XAxis
+          dataKey="category"
           tick={{ fontSize: 12 }}
           angle={-45}
           textAnchor="end"
           height={80}
         />
-        <YAxis 
+        <YAxis
           tick={{ fontSize: 12 }}
           tickFormatter={(value) => formatBudgetAmount(value, locale)}
         />
@@ -156,15 +166,13 @@ export default function BudgetChart({
       default:
         return (
           <div className="flex items-center justify-center h-full">
-            <p className="text-muted-foreground">Chart type not supported yet</p>
+            <p className="text-muted-foreground">
+              Chart type not supported yet
+            </p>
           </div>
         );
     }
   };
 
-  return (
-    <div className="w-full bg-white rounded-lg">
-      {renderChart()}
-    </div>
-  );
+  return <div className="w-full bg-white rounded-lg">{renderChart()}</div>;
 }

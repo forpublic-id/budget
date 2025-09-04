@@ -284,7 +284,13 @@ export type Locale = "id" | "en";
 export type Currency = "IDR";
 export type BudgetLevel = "national" | "provincial" | "city" | "regency";
 export type TimePeriod = "annual" | "quarterly" | "monthly";
-export type ChartType = "pie" | "bar" | "line" | "treemap" | "sankey" | "scatter";
+export type ChartType =
+  | "pie"
+  | "bar"
+  | "line"
+  | "treemap"
+  | "sankey"
+  | "scatter";
 
 // Component Props Types
 export interface BudgetVisualizationProps {

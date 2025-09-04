@@ -101,6 +101,9 @@
       "pariwisata": "Pariwisata",
       "pertanian": "Pertanian",
       "energi": "Energi",
+      "ketahanan_pangan": "Ketahanan Pangan",
+      "makan_bergizi": "Makan Bergizi",
+      "energi_subsidi": "Subsidi Energi",
       "education": "Pendidikan",
       "health": "Kesehatan",
       "defense": "Pertahanan",
@@ -109,6 +112,56 @@
       "social": "Sosial",
       "environment": "Lingkungan"
     }
+  },
+  "about": {
+    "title": "Tentang Budget ForPublic.id",
+    "subtitle": "Platform transparansi anggaran yang dikembangkan komunitas",
+    "mission": "Membuat informasi anggaran publik mudah diakses untuk semua",
+    "features": {
+      "title": "Fitur Utama",
+      "visualization": "Visualisasi interaktif data anggaran",
+      "comparison": "Perbandingan anggaran antar daerah",
+      "analysis": "Analisis tren dan proyeksi",
+      "search": "Pencarian dan filter lanjutan"
+    },
+    "data_sources": "Sumber Data",
+    "methodology": "Metodologi",
+    "disclaimer": "Platform ini dikembangkan oleh komunitas dan bukan bagian dari pemerintah."
+  },
+  "national": {
+    "title": "Anggaran Nasional (APBN)",
+    "subtitle": "Data lengkap APBN Indonesia dengan analisis mendalam",
+    "overview": "Ringkasan APBN",
+    "details": "Detail Anggaran",
+    "year_selection": "Pilih Tahun"
+  },
+  "regional": {
+    "title": "Anggaran Daerah (APBD)",
+    "subtitle": "Eksplorasi anggaran provinsi dan kabupaten/kota",
+    "provinces": "Provinsi",
+    "cities": "Kab/Kota",
+    "select_region": "Pilih Daerah"
+  },
+  "compare": {
+    "title": "Perbandingan Anggaran",
+    "subtitle": "Bandingkan anggaran antar daerah",
+    "metrics": "Metrik Perbandingan",
+    "table_view": "Tampilan Tabel",
+    "chart_view": "Tampilan Grafik"
+  },
+  "trends": {
+    "title": "Analisis Tren",
+    "subtitle": "Analisis historis dan proyeksi anggaran",
+    "period": "Periode",
+    "growth": "Pertumbuhan",
+    "insights": "Wawasan Kunci"
+  },
+  "search": {
+    "title": "Pencarian Anggaran",
+    "subtitle": "Cari item anggaran spesifik",
+    "filters": "Filter",
+    "results": "Hasil Pencarian",
+    "export": "Ekspor Hasil"
   },
   "footer": {
     "tagline": "Transparansi Anggaran untuk Akuntabilitas Publik",

@@ -39,10 +39,10 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center space-x-3">
-            <Image 
-              src="/logo.svg" 
-              alt="Budget ForPublic.id Logo" 
-              width={32} 
+            <Image
+              src="/logo.svg"
+              alt="Budget ForPublic.id Logo"
+              width={32}
               height={32}
               className="h-8 w-8"
             />
