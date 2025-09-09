@@ -1,5 +1,27 @@
 // Budget Data Types for Indonesian Government Budget Transparency
 
+// Branded types for better type safety
+export type BudgetId = string & { readonly __brand: unique symbol };
+export type RegionId = string & { readonly __brand: unique symbol };
+export type CategoryId = string & { readonly __brand: unique symbol };
+export type MinistryId = string & { readonly __brand: unique symbol };
+export type YearId = number & { readonly __brand: unique symbol };
+
+// Helper functions for branded types
+export const createBudgetId = (id: string): BudgetId => id as BudgetId;
+export const createRegionId = (id: string): RegionId => id as RegionId;
+export const createCategoryId = (id: string): CategoryId => id as CategoryId;
+export const createMinistryId = (id: string): MinistryId => id as MinistryId;
+export const createYearId = (year: number): YearId => year as YearId;
+
+// Discriminated union for chart configurations
+export type ChartConfig = 
+  | { type: 'pie'; showLegend: boolean; innerRadius?: number }
+  | { type: 'bar'; orientation: 'horizontal' | 'vertical'; showGrid: boolean }
+  | { type: 'line'; showGrid: boolean; smooth: boolean }
+  | { type: 'treemap'; showLabels: boolean; maxDepth: number }
+  | { type: 'sankey'; nodeWidth: number; nodePadding: number };
+
 export interface BudgetMetadata {
   year: number;
   type: "APBN" | "APBD";
@@ -38,15 +60,16 @@ export interface BudgetExpenditure {
 }
 
 export interface BudgetData {
-  metadata: BudgetMetadata;
-  revenue: BudgetRevenue;
-  expenditure: BudgetExpenditure;
-  deficit?: number;
-  surplus?: number;
-  financing?: {
-    total: number;
-    domestic: number;
-    foreign: number;
+  readonly id: BudgetId;
+  readonly metadata: BudgetMetadata;
+  readonly revenue: BudgetRevenue;
+  readonly expenditure: BudgetExpenditure;
+  readonly deficit?: number;
+  readonly surplus?: number;
+  readonly financing?: {
+    readonly total: number;
+    readonly domestic: number;
+    readonly foreign: number;
   };
 }
 

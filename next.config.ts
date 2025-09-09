@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
     turbo: undefined,
     // Memory optimization
     optimizePackageImports: ["lucide-react", "recharts", "d3"],
+    // React 19 optimizations
+    reactCompiler: true,
+    ppr: true, // Partial Prerendering
   },
 
   // Development optimizations
@@ -18,6 +21,33 @@ const nextConfig: NextConfig = {
     maxInactiveAge: 25 * 1000,
     // Number of pages that should be kept simultaneously without being disposed
     pagesBufferLength: 2,
+  },
+
+  // Security headers
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;",
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+        ],
+      },
+    ];
   },
 
   // Webpack optimizations

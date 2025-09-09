@@ -1,22 +1,41 @@
-# AGENTS.md
+# Repository Guidelines
 
-1. Install: `bun install`. Dev: `bun run dev` (or `dev:turbo`). Build: `bun run build`; start: `bun run start`; lint: `bun run lint`; type check: `bun run typecheck`; format: `bun run format`; check format: `bun run format:check`.
-2. No tests yet (no test deps). To add one: prefer Vitest + React Testing Library; run all: `bun x vitest`; single test: `bun x vitest path/to/file.test.ts --run`; watch failed: `-u --watch`.
-3. Use Bun or Node 18+. Keep lock: `bun.lock` committed; do NOT add yarn/npm locks.
-4. Imports order: (a) node/stdlib, (b) external libs, (c) alias `@/` modules, (d) relative (`../`, `./`); blank line between groups; named imports alphabetized.
-5. Use TypeScript strict types; no `any` (except conscious escape with comment `// intentional-any`); favor `unknown` over `any`; derive types from data (`typeof obj` / interfaces in `lib/types`).
-6. Components: server by default; add `"use client"` only if using state/effect or browser APIs. Keep props typed with explicit interface.
-7. Naming: PascalCase for components/types; camelCase for vars/functions; UPPER_SNAKE for constants; file names match default export (e.g., `BudgetChart.tsx`).
-8. Formatting: Prettier default; 2-space (TS/JS/JSON), Tailwind classes ordered logically (semantic grouping; do not wrap arbitrarily). Never commit unformatted code.
-9. CSS: Prefer Tailwind utility classes; avoid custom global styles unless token-related; keep dark/light accessible contrast.
-10. Data: Static JSON only; never write runtime mutating public data; add new schema changes to `lib/types/budget.ts` and document in README.
-11. i18n: All user-visible strings via `next-intl`; no hard-coded Indonesian/English literals in components; add keys to `i18n/messages/*.json` both locales.
-12. Currency/number formatting: Use helpers in `lib/utils.ts` (`formatBudgetAmount`, `formatCurrency`, `calculatePercentage`); do not duplicate logic.
-13. Error handling: Fail gracefully—wrap data fetch/transform in try/catch; return fallback UI; never throw uncaught errors in React render.
-14. Accessibility: All interactive elements keyboard navigable; provide aria-labels where text not explicit; color choices must meet WCAG 2.1 AA.
-15. Performance: Avoid expensive recalculation inside render; memoize derived chart data; lazy-load heavy visualizations if growth expands.
-16. Do not introduce runtime secrets; environment vars prefixed `NEXT_PUBLIC_` only for public usage; keep potential future private keys out of repo.
-17. Commit style: concise imperative (e.g., "add growth calc for expenditure"); group related changes; no WIP commits.
-18. Add tests alongside files (`Component.test.tsx`); mock i18n where necessary; snapshot only for stable structural output.
-19. New agents: respect CLAUDE.md for architecture context; update this file if adding tooling (e.g., test scripts) so automation stays accurate.
-20. If adding Copilot/Cursor rules later (.github/copilot-instructions.md or .cursor/rules/), summarize them here for agent visibility.
+## Project Structure & Module Organization
+- Next.js + TypeScript app. Key folders: `app/` (routes/layouts), `components/`, `lib/` (helpers, `lib/types/`), `i18n/messages/` (locale JSON), and `public/` (static assets). 
+- Tests live next to code: `Component.test.tsx`.
+
+## Build, Test, and Development Commands
+- Install deps: `bun install` (keep `bun.lock`; do not add npm/yarn locks).
+- Local dev: `bun run dev` (or `bun run dev:turbo`).
+- Build: `bun run build`; start: `bun run start`.
+- Lint: `bun run lint`; type check: `bun run typecheck`.
+- Format: `bun run format`; check only: `bun run format:check`.
+- Tests (when added): prefer Vitest + React Testing Library. Run all: `bun x vitest`. Single file: `bun x vitest path/to/file.test.ts --run`. Watch failed: `bun x vitest -u --watch`.
+
+## Coding Style & Naming Conventions
+- TypeScript strict; avoid `any` (prefer `unknown`; if unavoidable, add `// intentional-any`).
+- Imports order: node → external → `@/` aliases → relative; blank line between groups; alphabetize named imports.
+- Components are server by default; add `"use client"` only for state/effects or browser APIs. 
+- Naming: PascalCase components/types; camelCase vars/functions; UPPER_SNAKE constants; filename matches default export (e.g., `BudgetChart.tsx`).
+- Prettier defaults; 2‑space indent; Tailwind utilities ordered logically. Never commit unformatted code.
+
+## Testing Guidelines
+- Frameworks: Vitest + React Testing Library.
+- Place tests alongside source; mock i18n; use snapshots only for stable markup.
+- Aim for meaningful coverage of data transforms and UI behavior.
+
+## i18n, Data, and Utilities
+- All user text via `next-intl`. Add keys to `i18n/messages/*.json` for all locales.
+- Data is static JSON; do not mutate public data at runtime. Update schemas in `lib/types/budget.ts` and document changes in `README.md`.
+- Use helpers in `lib/utils.ts` (`formatBudgetAmount`, `formatCurrency`, `calculatePercentage`); do not duplicate logic.
+
+## Accessibility, Errors, and Performance
+- Keyboard-accessible interactions; provide `aria-*` where text is not explicit; meet WCAG 2.1 AA contrast.
+- Wrap data fetch/transform in try/catch and render safe fallbacks; never throw in render.
+- Avoid expensive work in render; memoize derived chart data; lazy-load heavy visuals if needed.
+
+## Commit & Pull Request Guidelines
+- Commits: concise, imperative (e.g., "add growth calc for expenditure"); group related changes; no WIP commits.
+- PRs: clear description, linked issues, screenshots for UI, note i18n keys/schema changes.
+- Runtime: Bun or Node 18+. Public envs must be `NEXT_PUBLIC_*`; never introduce secrets.
+

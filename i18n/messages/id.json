@@ -163,6 +163,12 @@
     "results": "Hasil Pencarian",
     "export": "Ekspor Hasil"
   },
+  "seo": {
+    "dynamic_title": "{type} {year} {region} - {amount} | Budget ForPublic.id",
+    "default_title": "{type} {year} - Anggaran Indonesia | Budget ForPublic.id",
+    "dynamic_description": "Transparansi lengkap {type} {region} tahun {year}. Pendapatan: {revenue}, Belanja: {expenditure}. Visualisasi interaktif dan analisis mendalam.",
+    "default_description": "Transparansi lengkap {type} Indonesia tahun {year} dengan visualisasi interaktif dan analisis mendalam."
+  },
   "footer": {
     "tagline": "Transparansi Anggaran untuk Akuntabilitas Publik",
     "mission": "Inisiatif komunitas terbuka untuk mempermudah akses informasi anggaran pemerintah Indonesia. Platform ini dikelola oleh relawan dan bukan merupakan platform resmi pemerintah.",

@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/Button";
 import BudgetOverview from "@/components/budget/BudgetOverview";
 import BudgetChart from "@/components/budget/BudgetChart";
 import { fetchNationalBudget } from "@/lib/data";
+import { generateBudgetMetadata } from "@/lib/seo";
 
 interface NationalPageProps {
   params: Promise<{
@@ -127,16 +128,24 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "national" });
-
-  return {
-    title: "APBN 2025 - Anggaran Pendapatan dan Belanja Negara",
-    description:
-      "Transparansi lengkap APBN Indonesia 2025 dengan visualisasi interaktif",
-    openGraph: {
-      title: "APBN 2025 - Budget ForPublic.id",
-      description:
-        "Transparansi lengkap APBN Indonesia 2025 dengan visualisasi interaktif",
-    },
-  };
+  
+  try {
+    const budgetData = await fetchNationalBudget(2025);
+    
+    return await generateBudgetMetadata({
+      locale,
+      year: '2025',
+      region: 'Indonesia',
+      type: 'national',
+      budgetData,
+    });
+  } catch (error) {
+    // Fallback metadata if data fetch fails
+    return await generateBudgetMetadata({
+      locale,
+      year: '2025',
+      region: 'Indonesia',
+      type: 'national',
+    });
+  }
 }

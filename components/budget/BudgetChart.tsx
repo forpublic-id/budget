@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo, useMemo, useCallback } from "react";
 import {
   PieChart,
   Pie,
@@ -44,7 +44,7 @@ const CHART_COLORS = [
   "#65a30d", // Lime
 ];
 
-export default function BudgetChart({
+const BudgetChart = memo(function BudgetChart({
   data,
   type,
   height = 400,
@@ -54,8 +54,8 @@ export default function BudgetChart({
 }: BudgetChartProps) {
   const t = useTranslations("budget");
 
-  // Transform budget data for different chart types
-  const transformDataForChart = () => {
+  // Transform budget data for different chart types - memoized for performance
+  const transformDataForChart = useCallback(() => {
     switch (type) {
       case "pie":
         return Object.entries(data.expenditure.categories).map(
@@ -79,11 +79,11 @@ export default function BudgetChart({
       default:
         return [];
     }
-  };
+  }, [data, type, t]);
 
-  const chartData = transformDataForChart();
+  const chartData = useMemo(() => transformDataForChart(), [transformDataForChart]);
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = useCallback(({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
@@ -103,9 +103,9 @@ export default function BudgetChart({
       );
     }
     return null;
-  };
+  }, [locale]);
 
-  const renderPieChart = () => (
+  const renderPieChart = useMemo(() => (
     <ResponsiveContainer width="100%" height={height}>
       <PieChart>
         <Pie
@@ -127,9 +127,9 @@ export default function BudgetChart({
         <Legend wrapperStyle={{ paddingTop: "20px" }} iconType="circle" />
       </PieChart>
     </ResponsiveContainer>
-  );
+  ), [chartData, height, showTooltip, CustomTooltip]);
 
-  const renderBarChart = () => (
+  const renderBarChart = useMemo(() => (
     <ResponsiveContainer width="100%" height={height}>
       <BarChart
         data={chartData}
@@ -155,14 +155,14 @@ export default function BudgetChart({
         </Bar>
       </BarChart>
     </ResponsiveContainer>
-  );
+  ), [chartData, height, showTooltip, CustomTooltip, locale]);
 
-  const renderChart = () => {
+  const renderChart = useMemo(() => {
     switch (type) {
       case "pie":
-        return renderPieChart();
+        return renderPieChart;
       case "bar":
-        return renderBarChart();
+        return renderBarChart;
       default:
         return (
           <div className="flex items-center justify-center h-full">
@@ -172,7 +172,9 @@ export default function BudgetChart({
           </div>
         );
     }
-  };
+  }, [type, renderPieChart, renderBarChart]);
 
-  return <div className="w-full bg-white rounded-lg">{renderChart()}</div>;
-}
+  return <div className="w-full bg-white rounded-lg">{renderChart}</div>;
+});
+
+export default BudgetChart;

@@ -12,7 +12,10 @@
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "clean": "rm -rf .next && rm -rf node_modules/.cache"
+    "clean": "rm -rf .next && rm -rf node_modules/.cache",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@next/third-parties": "^15.5.2",
@@ -30,7 +33,11 @@
     "react-dom": "^19.1.1",
     "tailwind-merge": "^3.3.1",
     "recharts": "^3.1.2",
-    "d3": "^7.9.0"
+    "d3": "^7.9.0",
+    "zustand": "^5.0.2",
+    "@vercel/analytics": "^1.4.1",
+    "@vercel/speed-insights": "^1.1.0",
+    "isomorphic-dompurify": "^2.25.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
@@ -44,6 +51,12 @@
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.12",
     "tw-animate-css": "^1.3.8",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/jest-dom": "^6.6.5",
+    "@testing-library/user-event": "^14.5.2",
+    "jest": "^30.0.4",
+    "jest-environment-jsdom": "^30.0.4",
+    "@types/jest": "^29.5.14"
   }
 }

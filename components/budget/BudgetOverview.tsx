@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { TrendingUp, TrendingDown, DollarSign, PieChart } from "lucide-react";
 import {
@@ -22,21 +22,25 @@ interface BudgetOverviewProps {
   locale?: string;
 }
 
-export default function BudgetOverview({
+const BudgetOverview = memo(function BudgetOverview({
   data,
   locale = "id-ID",
 }: BudgetOverviewProps) {
   const t = useTranslations("budget");
   // const tCommon = useTranslations("common"); // reserved for future shared labels
 
-  const isDeficit = data.expenditure.total > data.revenue.total;
-  const balanceAmount = Math.abs(data.expenditure.total - data.revenue.total);
-  const deficitPercentage = calculatePercentage(
-    balanceAmount,
-    data.revenue.total,
-  );
+  const calculatedStats = useMemo(() => {
+    const isDeficit = data.expenditure.total > data.revenue.total;
+    const balanceAmount = Math.abs(data.expenditure.total - data.revenue.total);
+    const deficitPercentage = calculatePercentage(
+      balanceAmount,
+      data.revenue.total,
+    );
 
-  const stats = [
+    return { isDeficit, balanceAmount, deficitPercentage };
+  }, [data.expenditure.total, data.revenue.total]);
+
+  const stats = useMemo(() => [
     {
       title: t("revenue"),
       value: formatBudgetAmount(data.revenue.total, locale),
@@ -54,29 +58,30 @@ export default function BudgetOverview({
       description: "Total belanja negara",
     },
     {
-      title: isDeficit ? t("deficit") : t("surplus"),
-      value: formatBudgetAmount(balanceAmount, locale),
-      icon: isDeficit ? TrendingDown : TrendingUp,
-      color: isDeficit ? "text-red-600" : "text-green-600",
-      bgColor: isDeficit ? "bg-red-50" : "bg-green-50",
-      description: `${formatPercentage(deficitPercentage)} dari pendapatan`,
+      title: calculatedStats.isDeficit ? t("deficit") : t("surplus"),
+      value: formatBudgetAmount(calculatedStats.balanceAmount, locale),
+      icon: calculatedStats.isDeficit ? TrendingDown : TrendingUp,
+      color: calculatedStats.isDeficit ? "text-red-600" : "text-green-600",
+      bgColor: calculatedStats.isDeficit ? "bg-red-50" : "bg-green-50",
+      description: `${formatPercentage(calculatedStats.deficitPercentage)} dari pendapatan`,
     },
-  ];
+  ], [data.revenue.total, data.expenditure.total, calculatedStats, locale, t]);
 
-  const topCategories = Object.entries(data.expenditure.categories)
-    .sort(([, a], [, b]) => b - a)
-    .slice(0, 5)
-    .map(([category, amount]) => ({
-      category: (() => {
-        try {
-          return t(`categories.${category}` as any);
-        } catch {
-          return category;
-        }
-      })(),
-      amount,
-      percentage: calculatePercentage(amount, data.expenditure.total),
-    }));
+  const topCategories = useMemo(() => 
+    Object.entries(data.expenditure.categories)
+      .sort(([, a], [, b]) => b - a)
+      .slice(0, 5)
+      .map(([category, amount]) => ({
+        category: (() => {
+          try {
+            return t(`categories.${category}` as any);
+          } catch {
+            return category;
+          }
+        })(),
+        amount,
+        percentage: calculatePercentage(amount, data.expenditure.total),
+      })), [data.expenditure.categories, data.expenditure.total, t]);
 
   return (
     <div className="space-y-6">
@@ -188,4 +193,6 @@ export default function BudgetOverview({
       </Card>
     </div>
   );
-}
+});
+
+export default BudgetOverview;
