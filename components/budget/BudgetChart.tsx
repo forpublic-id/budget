@@ -42,6 +42,8 @@ const CHART_COLORS = [
   "#be185d", // Pink
   "#0d9488", // Teal
   "#65a30d", // Lime
+  "#94a3b8", // Slate
+  "#f97316", // Orange alt
 ];
 
 const BudgetChart = memo(function BudgetChart({
@@ -87,47 +89,86 @@ const BudgetChart = memo(function BudgetChart({
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
-        <div className="bg-white border border-gray-200 rounded-lg p-3 shadow-lg">
-          <p className="font-semibold text-gray-900">
+        <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-xl backdrop-blur-sm">
+          <p className="font-semibold text-gray-900 mb-2">
             {data.name || data.category}
           </p>
-          <p className="text-sm text-gray-600">
-            {formatBudgetAmount(data.value || data.amount, locale)}
-          </p>
-          {data.percentage && (
-            <p className="text-sm text-gray-500">
-              {formatPercentage(data.percentage)}%
+          <div className="space-y-1">
+            <p className="text-base font-medium text-gray-800">
+              {formatBudgetAmount(data.value || data.amount, locale)}
             </p>
-          )}
+            {data.percentage && (
+              <p className="text-sm font-medium text-red-600">
+                {formatPercentage(data.percentage)}% dari total
+              </p>
+            )}
+          </div>
         </div>
       );
     }
     return null;
   }, [locale]);
 
-  const renderPieChart = useMemo(() => (
-    <ResponsiveContainer width="100%" height={height}>
-      <PieChart>
-        <Pie
-          data={chartData}
-          cx="50%"
-          cy="50%"
-          innerRadius={50}
-          outerRadius={130}
-          paddingAngle={1}
-          dataKey="value"
-          stroke="#fff"
-          strokeWidth={2}
-        >
-          {chartData.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.color} />
-          ))}
-        </Pie>
-        {showTooltip && <Tooltip content={<CustomTooltip />} />}
-        <Legend wrapperStyle={{ paddingTop: "20px" }} iconType="circle" />
-      </PieChart>
-    </ResponsiveContainer>
-  ), [chartData, height, showTooltip, CustomTooltip]);
+  const renderPieChart = useMemo(() => {
+    // Calculate responsive sizing
+    const isSmall = height < 300;
+    const pieRadius = isSmall ? { inner: 40, outer: 90 } : { inner: 55, outer: 120 };
+    
+    return (
+      <div className="relative w-full">
+        <ResponsiveContainer width="100%" height={height}>
+          <PieChart margin={{ top: 20, right: 20, bottom: 60, left: 20 }}>
+            <Pie
+              data={chartData}
+              cx="50%"
+              cy="45%"
+              innerRadius={pieRadius.inner}
+              outerRadius={pieRadius.outer}
+              paddingAngle={2}
+              dataKey="value"
+              stroke="#ffffff"
+              strokeWidth={3}
+            >
+              {chartData.map((entry, index) => (
+                <Cell 
+                  key={`cell-${index}`} 
+                  fill={entry.color}
+                  style={{
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))',
+                  }}
+                />
+              ))}
+            </Pie>
+            {showTooltip && (
+              <Tooltip 
+                content={<CustomTooltip />}
+                cursor={{ fill: 'transparent' }}
+              />
+            )}
+            <Legend 
+              wrapperStyle={{ 
+                paddingTop: "20px",
+                fontSize: "12px",
+                fontWeight: "500",
+                maxHeight: "120px",
+                overflowY: "auto"
+              }} 
+              iconType="circle"
+              iconSize={6}
+              layout="horizontal"
+              align="center"
+              verticalAlign="bottom"
+              formatter={(value: any) => (
+                <span className="text-gray-700 text-xs truncate max-w-[120px] inline-block" title={value}>
+                  {value}
+                </span>
+              )}
+            />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+    );
+  }, [chartData, height, showTooltip, CustomTooltip]);
 
   const renderBarChart = useMemo(() => (
     <ResponsiveContainer width="100%" height={height}>
@@ -174,7 +215,13 @@ const BudgetChart = memo(function BudgetChart({
     }
   }, [type, renderPieChart, renderBarChart]);
 
-  return <div className="w-full bg-white rounded-lg">{renderChart}</div>;
+  return (
+    <div className="w-full h-full">
+      <div className="relative w-full h-full flex flex-col">
+        {renderChart}
+      </div>
+    </div>
+  );
 });
 
 export default BudgetChart;

@@ -49,13 +49,15 @@ async function BudgetPreview({
                 {tBudget("budget_preview.structure_description")}
               </CardDescription>
             </CardHeader>
-            <CardContent className="pt-2">
-              <BudgetChart
-                data={budgetData}
-                type="pie"
-                height={350}
-                locale={locale}
-              />
+            <CardContent className="pt-2 px-2">
+              <div className="flex items-center justify-center min-h-[350px]">
+                <BudgetChart
+                  data={budgetData}
+                  type="pie"
+                  height={350}
+                  locale={locale}
+                />
+              </div>
             </CardContent>
           </Card>
 
