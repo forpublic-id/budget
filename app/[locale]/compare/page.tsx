@@ -1,137 +1,17 @@
-"use client";
-
-import { useState } from "react";
-import { useTranslations } from "next-intl";
-import { ArrowUpDown, BarChart3, PieChart, TrendingUp, Download } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { formatBudgetAmount } from "@/lib/utils";
+import { ArrowUpDown, BarChart3, PieChart } from "lucide-react";
 
-// Mock data untuk perbandingan
-const comparisonData = [
-  {
-    name: "DKI Jakarta",
-    total: 82500000000000,
-    perCapita: 7710000,
-    population: 10700000,
-    type: "province",
-    revenue: 82500000000000,
-    expenditure: 79800000000000,
-    efficiency: 94.2,
-  },
-  {
-    name: "Jawa Barat",
-    total: 45800000000000,
-    perCapita: 952000,
-    population: 48100000,
-    type: "province",
-    revenue: 45800000000000,
-    expenditure: 43200000000000,
-    efficiency: 91.8,
-  },
-  {
-    name: "Jawa Timur",
-    total: 42300000000000,
-    perCapita: 1085000,
-    population: 39000000,
-    type: "province",
-    revenue: 42300000000000,
-    expenditure: 40100000000000,
-    efficiency: 89.5,
-  },
-  {
-    name: "Jawa Tengah",
-    total: 38900000000000,
-    perCapita: 1127000,
-    population: 34500000,
-    type: "province",
-    revenue: 38900000000000,
-    expenditure: 37200000000000,
-    efficiency: 87.3,
-  },
-];
-
-function ComparisonTable({ data, locale }: { data: any[]; locale: string }) {
-  return (
-    <div className="overflow-x-auto">
-      <table className="w-full border-collapse">
-        <thead>
-          <tr className="border-b border-gray-200 bg-gray-50">
-            <th className="text-left p-4 font-semibold text-gray-900">Daerah</th>
-            <th className="text-right p-4 font-semibold text-gray-900">Total Anggaran</th>
-            <th className="text-right p-4 font-semibold text-gray-900">Per Kapita</th>
-            <th className="text-right p-4 font-semibold text-gray-900">Populasi</th>
-            <th className="text-right p-4 font-semibold text-gray-900">Efisiensi</th>
-            <th className="text-center p-4 font-semibold text-gray-900">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((region, index) => (
-            <tr key={region.name} className="border-b border-gray-100 hover:bg-gray-50">
-              <td className="p-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                    <span className="text-sm font-medium text-primary">{index + 1}</span>
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900">{region.name}</p>
-                    <p className="text-sm text-gray-500">
-                      {region.type === "province" ? "Provinsi" : "Kab/Kota"}
-                    </p>
-                  </div>
-                </div>
-              </td>
-              <td className="p-4 text-right font-medium">
-                {formatBudgetAmount(region.total, locale)}
-              </td>
-              <td className="p-4 text-right font-medium">
-                {formatBudgetAmount(region.perCapita, locale)}
-              </td>
-              <td className="p-4 text-right text-gray-600">
-                {region.population.toLocaleString(locale)}
-              </td>
-              <td className="p-4 text-right">
-                <Badge 
-                  variant={region.efficiency > 90 ? "default" : region.efficiency > 85 ? "secondary" : "destructive"}
-                  className="text-xs"
-                >
-                  {region.efficiency.toFixed(1)}%
-                </Badge>
-              </td>
-              <td className="p-4 text-center">
-                <Button variant="outline" size="sm">
-                  Detail
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+interface ComparePageProps {
+  params: Promise<{
+    locale: string;
+  }>;
 }
 
-function ComparisonChart({ data, metric, locale }: { data: any[]; metric: string; locale: string }) {
-  return (
-    <div className="h-64 flex items-center justify-center bg-gray-50 rounded-lg">
-      <p className="text-muted-foreground">
-        Grafik perbandingan {metric} akan ditampilkan di sini
-      </p>
-    </div>
-  );
-}
-
-export default function ComparePage() {
-  const [selectedMetric, setSelectedMetric] = useState("total");
-  const [viewMode, setViewMode] = useState("table");
-  const t = useTranslations("compare");
-  
-  const metrics = [
-    { key: "total", label: "Total Anggaran", icon: BarChart3 },
-    { key: "perCapita", label: "Per Kapita", icon: TrendingUp },
-    { key: "efficiency", label: "Efisiensi", icon: PieChart },
-  ];
+export default async function ComparePage({ params }: ComparePageProps) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "compare" });
 
   return (
     <div className="min-h-screen bg-neutral-50">
@@ -140,125 +20,83 @@ export default function ComparePage() {
           {/* Header */}
           <div className="text-center space-y-4">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Perbandingan Anggaran Daerah
+              Perbandingan Anggaran
             </h1>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Bandingkan anggaran antar provinsi dan kabupaten/kota untuk 
-              menganalisis alokasi dan efisiensi pengelolaan keuangan daerah
+              Fitur perbandingan anggaran akan segera tersedia untuk membantu 
+              analisis antar daerah
             </p>
           </div>
 
-          {/* Controls */}
-          <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
-            <div className="flex flex-wrap gap-2">
-              {metrics.map((metric) => {
-                const IconComponent = metric.icon;
-                return (
-                  <Button
-                    key={metric.key}
-                    variant={selectedMetric === metric.key ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => setSelectedMetric(metric.key)}
-                    className="flex items-center space-x-2"
-                  >
-                    <IconComponent className="h-4 w-4" />
-                    <span>{metric.label}</span>
-                  </Button>
-                );
-              })}
-            </div>
-            
-            <div className="flex space-x-2">
-              <Button
-                variant={viewMode === "table" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setViewMode("table")}
-              >
-                Tabel
-              </Button>
-              <Button
-                variant={viewMode === "chart" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setViewMode("chart")}
-              >
-                Grafik
-              </Button>
-              <Button variant="outline" size="sm" className="flex items-center space-x-2">
-                <Download className="h-4 w-4" />
-                <span>Ekspor</span>
-              </Button>
-            </div>
-          </div>
-
-          {/* Comparison Content */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <ArrowUpDown className="h-5 w-5" />
-                <span>
-                  Perbandingan {metrics.find(m => m.key === selectedMetric)?.label}
-                </span>
-              </CardTitle>
+          {/* Coming Soon Card */}
+          <Card className="max-w-2xl mx-auto">
+            <CardHeader className="text-center">
+              <div className="flex justify-center mb-4">
+                <div className="p-3 bg-green-100 rounded-full">
+                  <ArrowUpDown className="h-8 w-8 text-green-600" />
+                </div>
+              </div>
+              <CardTitle className="text-2xl">Fitur Perbandingan</CardTitle>
               <CardDescription>
-                Ranking daerah berdasarkan {selectedMetric === "total" ? "total anggaran" : 
-                selectedMetric === "perCapita" ? "anggaran per kapita" : "tingkat efisiensi"}
+                Kami sedang mengembangkan tools perbandingan yang komprehensif 
+                untuk analisis anggaran lintas wilayah
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {viewMode === "table" ? (
-                <ComparisonTable data={comparisonData} locale="id-ID" />
-              ) : (
-                <ComparisonChart data={comparisonData} metric={selectedMetric} locale="id-ID" />
-              )}
+              <div className="space-y-4">
+                <h3 className="font-semibold text-lg">Fitur yang akan tersedia:</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex items-center space-x-2">
+                    <ArrowUpDown className="h-4 w-4" />
+                    <span>Perbandingan anggaran antar provinsi dan kab/kota</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <BarChart3 className="h-4 w-4" />
+                    <span>Visualisasi perbandingan dalam bentuk grafik</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <PieChart className="h-4 w-4" />
+                    <span>Analisis proporsi anggaran per kategori</span>
+                  </li>
+                </ul>
+              </div>
             </CardContent>
           </Card>
 
-          {/* Insights */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Anggaran Tertinggi</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <p className="font-bold text-2xl text-primary">DKI Jakarta</p>
-                  <p className="text-sm text-gray-600">
-                    Rp 82,5 T - Tertinggi di Indonesia
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Per Kapita Tertinggi</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <p className="font-bold text-2xl text-primary">DKI Jakarta</p>
-                  <p className="text-sm text-gray-600">
-                    Rp 7,7 Jt per kapita
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Efisiensi Tertinggi</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <p className="font-bold text-2xl text-primary">DKI Jakarta</p>
-                  <p className="text-sm text-gray-600">
-                    94,2% efisiensi anggaran
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+          {/* Quick Navigation */}
+          <div className="text-center">
+            <p className="text-gray-600 mb-4">Sementara ini, Anda dapat menjelajahi:</p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <div className="p-4 border rounded-lg">
+                <Link href={`/${locale}/national`} className="text-blue-600 hover:text-blue-800">
+                  <h4 className="font-semibold">APBN</h4>
+                  <p className="text-sm text-gray-600">Anggaran Nasional</p>
+                </Link>
+              </div>
+              <div className="p-4 border rounded-lg">
+                <Link href={`/${locale}/regional`} className="text-blue-600 hover:text-blue-800">
+                  <h4 className="font-semibold">APBD</h4>
+                  <p className="text-sm text-gray-600">Anggaran Daerah</p>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "compare" });
+
+  return {
+    title: "Perbandingan Anggaran - Budget ForPublic.id",
+    description: "Bandingkan anggaran APBN dan APBD antar wilayah Indonesia",
+  };
 }

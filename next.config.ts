@@ -10,9 +10,14 @@ const nextConfig: NextConfig = {
     turbo: undefined,
     // Memory optimization
     optimizePackageImports: ["lucide-react", "recharts", "d3"],
-    // React 19 optimizations
-    reactCompiler: true,
-    ppr: true, // Partial Prerendering
+    // React 19 optimizations - only enable features available in stable
+    // reactCompiler: true, // Only available in canary
+    // ppr: true, // Only available in canary
+  },
+
+  // Skip static generation for interactive pages
+  async generateBuildId() {
+    return 'budget-build-' + Date.now();
   },
 
   // Development optimizations

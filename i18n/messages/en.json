@@ -163,6 +163,12 @@
     "results": "Search Results",
     "export": "Export Results"
   },
+  "seo": {
+    "dynamic_title": "{type} {year} {region} - {amount} | Budget ForPublic.id",
+    "default_title": "{type} {year} - Indonesia Budget | Budget ForPublic.id",
+    "dynamic_description": "Complete transparency of {type} {region} for {year}. Revenue: {revenue}, Expenditure: {expenditure}. Interactive visualizations and in-depth analysis.",
+    "default_description": "Complete transparency of Indonesia {type} for {year} with interactive visualizations and in-depth analysis."
+  },
   "footer": {
     "tagline": "Budget Transparency for Public Accountability",
     "mission": "Open community initiative to facilitate access to Indonesian government budget information. This platform is managed by volunteers and is not an official government platform.",
