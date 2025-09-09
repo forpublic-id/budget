@@ -70,7 +70,20 @@ export async function fetchBudgetData(
 }
 
 export async function fetchNationalBudget(year: number): Promise<BudgetData> {
-  return fetchBudgetData("national", `apbn-${year}`);
+  try {
+    return await fetchBudgetData("national", `apbn-${year}`);
+  } catch (error) {
+    console.error(`Error fetching APBN ${year}, using fallback data:`, error);
+    
+    // Use fallback data for APBN 2025
+    if (year === 2025) {
+      const { fallbackAPBN2025 } = await import('./fallback-data');
+      return fallbackAPBN2025;
+    }
+    
+    // Re-throw error for other years
+    throw error;
+  }
 }
 
 export async function fetchRegionalBudget(
